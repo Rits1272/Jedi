@@ -1,5 +1,10 @@
 package main
 
+import (
+  "crypto/sha256"
+  "encoding/hex"
+)
+
 // this seems slow, can we use some other lightweight hashing algorithm
 func sha256Hash (key string) string {
   hash := sha256.New()
