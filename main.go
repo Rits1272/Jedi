@@ -2,22 +2,14 @@ package main
 
 import (
   "fmt"
-  "jedi/node"
+  "jedi/core"
 )
 
 func main() {
-  fmt.Println("Welcome to Jedi - A distributed, scalable and consistent cache store")
-  servers := [...] string {"1", "2", "3", "4", "5"}
-  chash := newConsistentHash(5, servers[:]) 
-  chash.listNodes()
+  fmt.Println("Welcome to Jedi - cache")
 
-  node.Start()
+  core.Jedi.SetKey("Hello", "Jedi")
+  var item *core.CacheItem = core.Jedi.GetKey("Hello")
+
+  fmt.Println("GET KEY: HELLO ->", item.Value)
 }
-
-/*
-JEDI
-- scalable (consistent hashing)
-- supports replication
-- heartbeat mechanism and failover support (zookeeper?)
-- Jedi client to get/set keys to/from cache store
-*/
